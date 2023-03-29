@@ -1,10 +1,10 @@
 import React , {useState} from 'react'
 import styles from './Register.module.css'
-import StepPhoneEmail from '../../Steps/StepPhoneEmail/StepPhoneEmail'
-import StepOtp from '../../Steps/StepOtp/StepOtp'
-import StepName from '../../Steps/StepName/StepName'
-import StepAvatar from '../../Steps/StepAvatar/StepAvatar'
-import StepUsername from '../../Steps/StepUsername/StepUsername'
+import StepPhoneEmail from '../Steps/StepPhoneEmail/StepPhoneEmail'
+import StepOtp from '../Steps/StepOtp/StepOtp'
+import StepName from '../Steps/StepName/StepName'
+import StepAvatar from '../Steps/StepAvatar/StepAvatar'
+import StepUsername from '../Steps/StepUsername/StepUsername'
 
 const steps = {
     1: StepPhoneEmail,
