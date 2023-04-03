@@ -2,16 +2,11 @@ import './App.css';
 import { BrowserRouter , Routes, Route, Navigate } from 'react-router-dom';
 import Home from './pages/Home/Home';
 import Navigation from './components/shared/Navigation/Navigation';
-import Register from './pages/Register/Register';
-import Login from './pages/Login/Login';
 import Authenticate from './pages/Authenticate/Authenticate';
 import Activate from './pages/Activate/Activate';
 import Rooms from './pages/Rooms/Rooms';
+import { useSelector } from 'react-redux';
 
-const isAuth = false;
-const user = {
-  activated: false,
-}
 
 function App() {
   return ( 
@@ -19,8 +14,6 @@ function App() {
     <Navigation />
     <Routes>
       <Route path="/" element={<><GuestRoute/><Home/></>}/>
-      {/* <Route path="/register" element={<Register/>}/>
-      <Route path="/login" element={<Login/>}/> */}
       
       <Route path="/authenticate" element={<><GuestRoute/><Authenticate/></>}/>
 
@@ -35,6 +28,8 @@ function App() {
 
 
 const GuestRoute = ({children,...location}) => {
+
+  const {isAuth} = useSelector((state) => state.auth)
   return isAuth ? (
  
     <Navigate to = 
@@ -52,6 +47,7 @@ const GuestRoute = ({children,...location}) => {
 }
 
 const SemiProtected = ({children,...location}) => {
+  const {user,isAuth} = useSelector((state) => state.auth)
   return !isAuth ? (
     <Navigate to = 
       {
@@ -77,6 +73,7 @@ const SemiProtected = ({children,...location}) => {
 }
 
 const ProtectedRoute = ({children,...location}) => {
+  const {user,isAuth} = useSelector((state) => state.auth)
   return !isAuth ? (
     <Navigate to = 
       {
